@@ -1,0 +1,66 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-size: 100%;
+    height: 100%;
+    width: auto;
+    overflow-x: hidden;
+    background-color: #A3CBF0 !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+
+/* Navigation */
+
+
+/* Forms */
+
+.form-control {
+    background: transparent;
+    border: 1px solid #0071BD !important;
+    border-radius: 10px !important;
+}
+
+
+/* Cards */
+
+.main-card {
+    display: flex;
+    border: none !important;
+    background-color: white;
+    border-radius: 10px !important;
+}
+
+
+/* Buttons */
+
+.btn-primary {
+    color: white !important;
+    background-color: #0071BD !important;
+}
+
+.btn {
+    border: none !important;
+    border-radius: 10px !important;
+}
+
+.btn:active {
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+
+.btn:focus {
+    outline: 0 !important;
+}

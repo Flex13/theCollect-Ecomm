@@ -1,0 +1,54 @@
+<%- include('../includes/header.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+
+        <main class="my-5">
+            <h1 class="display-5 fw-bold lh-1 mb-5 text-center">Our Products</h1>
+            <% if (prods.length > 0) { %>
+                <div class="container">
+                    <!--Section: Products-->
+                    <section>
+                        <div class="row">
+                            <% for (let product of prods) { %>
+
+                                <div class="col-lg-3 col-md-4 mb-4">
+                                    <div class="card main-card shadow">
+                                        <a href="/products/<%= product.id %>"><img src="<%= product.imageUrl %>" class="card-img-top" alt="<%= product.title %>" /></a>
+                                        <div class="card-body">
+                                            <a href="/products/<%= product.id %>">
+                                                <h6 class="card-title">
+                                                    R
+                                                    <%= product.title %>
+                                                </h6>
+                                            </a>
+                                            <span class="badge rounded-pill bg-info float-end"> <%= product.label %></span>
+                                            <h6>
+                                                R
+                                                <%= product.price %>
+                                            </h6>
+                                            <small class="text-muted">
+                                                <%= product.description %>
+                                            </small>
+
+
+                                            <form action="/cart" method="POST" class="mt-4">
+
+                                                <input type="hidden" id="productId" name="productId" value="<%= product.id %>" />
+
+                                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <% } %>
+                        </div>
+                    </section>
+                    <!--Section: Products-->
+                </div>
+                <% } else { %>
+                    <h3 class="text-center">No Products Found</h3>
+                    <% } %>
+        </main>
+        <%- include('../includes/footer.ejs') %>

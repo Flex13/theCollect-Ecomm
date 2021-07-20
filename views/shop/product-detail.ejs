@@ -1,0 +1,63 @@
+<%- include('../includes/header.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+        <main class="container my-5">
+            <div class="card shadow main-card">
+                <div class="row justify-content-md-center">
+
+                    <div class="col-md-4">
+                        <img src="<%= product.imageUrl %>" class="card-img-top img-fluid h-100" alt="<%= product.title%>">
+                    </div>
+
+                    <div class="col-md-8">
+
+                        <div class="card-body">
+
+                            <h1 class="display-6 fw-bold lh-1">
+                                <%= product.title %>
+                            </h1>
+                            <span class="badge rounded-pill bg-info"><%= product.label %></span>
+                            <h5 class="mt-3" style="font-weight: bold">R
+                                <%= product.price %>
+                            </h5>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <small class="text-muted">
+                                        <%= product.description %>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <form action="/cart" method="post">
+
+                                        <input type="hidden" id="productId" name="productId" value="<%= product.id %>" />
+
+                                        <div class="d-grid gap-2 col-md-4 ml-auto mt-4">
+                                            <div class="form-floating">
+                                                <input class="form-control" type="number" min="1" max="100" value="1" name="quantity" id="quantity" placeholder="Title ">
+                                                <label for="quantity">Quantity</label>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="d-grid gap-2 col-md-4 ml-auto mt-4">
+                                            <button type="submit" class="btn btn-success">Add to cart</button>
+                                            <a href="/products " class="btn btn-primary btn-block ">Back</a>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        <%- include('../includes/footer.ejs') %>

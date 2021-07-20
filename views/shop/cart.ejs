@@ -1,0 +1,59 @@
+<%- include('../includes/header.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+        <main class="container my-5">
+            <h1 class="display-5 fw-bold lh-1 mb-5 text-center">Cart</h1>
+
+            <% if (products.length > 0) { %>
+                <div class="container-fluid section-container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-8">
+                            <div class="card shadow mb-3 ">
+                                <div class="table-responsive">
+                                    <table class="table text-left">
+                                        <tr style="background-color: black; color: white;">
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Action</th>
+                                        </tr>
+
+
+
+                                        <% products.forEach(p => { %>
+                                            <tr>
+                                                <td>
+                                                    <%= p.productData.title %>
+                                                </td>
+                                                <td>
+                                                    <%= p.productData.price %>
+                                                </td>
+                                                <td>
+                                                    <%= p.qty %>
+                                                </td>
+                                                <td>
+                                                    <form action="/cart-delete-item" method="POST">
+                                                        <input type="hidden" value="<%= p.productData.id %>" name="productId">
+                                                        <button class="btn btn-danger" type="submit">Delete</button>
+                                                    </form>
+                                                </td>
+
+                                            </tr>
+                                            <% }) %>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <% } else { %>
+                    <h1 class="text-center">No Products in Cart!</h1>
+                    <% } %>
+
+        </main>
+        <%- include('../includes/footer.ejs') %>

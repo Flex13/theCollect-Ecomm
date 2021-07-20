@@ -1,0 +1,61 @@
+<%- include('../includes/header.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+        <main class="my-5">
+            <h1 class="display-5 fw-bold lh-1 mb-5 text-center">
+                <% if (editing) { %> Update Product
+                    <% } else { %> Add Product
+                        <% } %>
+            </h1>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form class="product-form" action="/admin/<% if (editing) { %>edit-product <% } else { %>add-product <% } %>" method="POST">
+
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="text" name="title" id="title" placeholder="Title" value="<% if (editing) { %><%= product.title %>   <% } %>">
+                                <label for="title">Title</label>
+                            </div>
+
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" placeholder="Image" type="text" id="imageUrl" name="imageUrl" id="title" value="<% if (editing) { %><%= product.imageUrl %>   <% } %>">
+                                <label for="imageUrl">Image Url</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input step="0.01" class="form-control" placeholder="R" type="text" name="price" id="price" value="<% if (editing) { %><%= product.price %>   <% } %>">
+                                <label for="price">Price</label>
+                            </div>
+
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" placeholder="Label" type="text" name="label" id="label" value="<% if (editing) { %><%= product.label %>   <% } %>">
+                                <label for="label">Label</label>
+                            </div>
+
+
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" name="description" id="description" style="height: 100px"><% if (editing) { %><%= product.description %>   <% } %></textarea>
+                                <label for="descripion">Description</label>
+                            </div>
+
+                            <% if (editing) { %>
+
+                                <input type="hidden" name="productId" id="productId" value="<%= product.id %>">
+                                <% } %>
+
+                                    <div class="d-grid gap-2 col-md-6 ml-auto">
+                                        <button class="btn btn-primary" type="submit"> <% if (editing) { %> Update Product
+                                    <% } else { %> Add Product
+                                        <% } %>
+                                            </button>
+                                        <a href="/admin/product-list" class="btn btn-dark">Back</a>
+                                    </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('../includes/footer.ejs') %>
