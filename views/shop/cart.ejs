@@ -5,11 +5,12 @@
 
             <% if (products.length > 0) { %>
                 <div class="row ">
-                    <div class="col-md-12 col-lg-10">
+                    <div class="col-md-12 col-lg-12">
                         <div class="card main-card shadow mb-3 ">
                             <div class="table-responsive">
                                 <table class="table text-left">
                                     <tr>
+                                        <th width="10%">Image</th>
                                         <th>Name</th>
                                         <th>Quantity</th>
                                         <th>Action</th>
@@ -20,14 +21,19 @@
                                     <% products.forEach(p => { %>
                                         <tr>
                                             <td>
-                                                <%= p.title %>
+                                                <div class="img-wrap">
+                                                    <img src="<%= p.productId.imageUrl %>" class="card-img-top img-fluid" alt="<%= p.productId.title %>" />
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <%= p.productId.title %>
                                             </td>
                                             <td>
                                                 <%= p.quantity %>
                                             </td>
                                             <td>
                                                 <form action="/cart-delete-item" method="POST">
-                                                    <input type="hidden" value="<%= p._id %>" name="productId">
+                                                    <input type="hidden" value="<%= p.productId._id %>" name="productId">
                                                     <button class="btn btn-danger" type="submit">Delete</button>
                                                 </form>
                                             </td>

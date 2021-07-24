@@ -1,64 +1,73 @@
 <%- include('../includes/header.ejs') %>
     <%- include('../includes/nav.ejs') %>
+        <main class="container my-5">
+            <h1 class="display-5 fw-bold lh-1 mb-5 text-center">Admin - All Products</h1>
 
-        <main class="my-5">
+            <% if (prods.length> 0) { %>
+                <div class="row ">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="card main-card shadow mb-3 ">
+                            <div class="table-responsive">
+                                <table class="table text-center">
+                                    <tr style="text-align: center;">
+                                        <th width="10%">Image</th>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th>Label</th>
+                                        <th>Edit</th>
+                                        <th>Action</th>
+                                    </tr>
 
-            <h1 class="display-5 fw-bold lh-1 mb-5 text-center">Admin Products</h1>
-            <% if (prods.length > 0) { %>
-                <div class="container">
-                    <!--Section: Products-->
-                    <section>
-                        <div class="row">
-                            <% for (let product of prods) { %>
-                                <div class="col-lg-3 col-md-4 mb-4">
-                                    <article class="card shadow product-card">
-                                        <a href="/admin/product-details/<%= product._id %>"><img src="<%= product.imageUrl %>" class="card-img-top" alt="<%= product.title %>" /></a>
-                                        <div class="card-body">
 
-                                            <a href="/admin/product-details/<%= product._id %>">
-                                                <h6 class="card-title mb-3">
-                                                    <%= product.title %>
-                                                </h6>
-                                            </a>
-                                            <span class="badge rounded-pill bg-dark float-end"> <%= product.label %></span>
-                                            <h6 class="mb-3">
+
+
+
+                                    <% for (let product of prods) { %>
+                                        <tr>
+                                            <td>
+                                                <div class="img-wrap">
+                                                    <img src="<%= product.imageUrl %>" class="card-img-top img-fluid" alt="<%= product.title %>" />
+                                                </div>
+
+                                            </td>
+                                            <td>
+                                                <%= product.title %>
+                                            </td>
+                                            <td>
                                                 R
                                                 <%= product.price %>
-                                            </h6>
+                                            </td>
+                                            <td>
+                                                <%= product.label %>
+                                            </td>
+                                            <td>
 
-                                            <p class="text-muted">
-
-                                                <%
-
-                                                var description = product.description;
-                                                    var result;
-                                                    result = description.slice(0, 100)+'...';
-                                                    %>
-                                                    <%= result %>
-                                            </p>
-
-                                            <div class="d-grid gap-2 mx-auto mb-2">
-                                                <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn btn-warning">Edit</a>
-                                            </div>
-                                            <form action="/admin/delete-product" method="POST">
-
-                                                <input type="hidden" name="productId" id="productId" value="<%= product._id %>">
-                                                <div class="d-grid gap-2 mx-auto">
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                <div class="d-grid mx-auto">
+                                                    <a href="/admin/edit-product/<%= product._id %>?edit=true" class="btn btn-warning">Edit</a>
                                                 </div>
-                                            </form>
+                                            </td>
+                                            <td>
+                                                <form action="/admin/delete-product" method="POST">
 
-                                        </div>
-                                    </article>
-                                </div>
+                                                    <input type="hidden" name="productId" id="productId" value="<%= product._id %>">
+                                                    <div class="d-grid mx-auto">
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </div>
+                                                </form>
+                                            </td>
 
-                                <% } %>
+                                        </tr>
+                                        <% } %>
+
+                                </table>
+                            </div>
                         </div>
-                    </section>
-                    <!--Section: Products-->
+                    </div>
                 </div>
+
                 <% } else { %>
-                    <h3 class="text-center">No Products Found</h3>
+                    <h1 class="text-center">No Products Found</h1>
                     <% } %>
+
         </main>
         <%- include('../includes/footer.ejs') %>
