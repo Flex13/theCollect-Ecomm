@@ -1,49 +1,37 @@
-//Require Express
-const express = require('express')
-    //Require Body Paraser
+const path = require('path');
+
+const express = require('express');
 const bodyParser = require('body-parser');
-//Require Path
-const path = require('path')
 
-//Require Error Path
-const errorController = require('./controllers/error')
-const db = require('./util/database')
+const errorController = require('./controllers/error');
+const mongoConnect = require('./util/database').mongoConnect;
+const User = require('./models/user');
 
-
-//Init Express app and Port Number
-const app = express()
-const port = process.env.PORT || 3000
-
-
+const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-
-//Routes
-const adminRoutes = require('./routes/admin')
-const shopRoutes = require('./routes/shop')
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+    User.findById('60fb7087de62fa455cfc46d4')
+        .then(user => {
+            req.user = new User(user.name, user.email, user.cart, user._id);
+            next();
+        })
+        .catch(err => console.log(err));
+});
 
-
-//Get JSON Inputs
-app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-
-//USe Routes in App
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
+app.use(errorController.get404);
 
-app.use(errorController.get404)
-
-
-
-
-//Start Server
-app.listen(port, () => {
-    console.log('Server is Running on Port ' + port)
-})
+mongoConnect(() => {
+    app.listen(3000);
+});

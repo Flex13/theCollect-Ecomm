@@ -4,52 +4,50 @@
             <h1 class="display-5 fw-bold lh-1 mb-5 text-center">Cart</h1>
 
             <% if (products.length > 0) { %>
-                <div class="container-fluid section-container">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-8">
-                            <div class="card shadow mb-3 ">
-                                <div class="table-responsive">
-                                    <table class="table text-left">
-                                        <tr style="background-color: black; color: white;">
-                                            <th>Name</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th>Action</th>
+                <div class="row ">
+                    <div class="col-md-12 col-lg-10">
+                        <div class="card main-card shadow mb-3 ">
+                            <div class="table-responsive">
+                                <table class="table text-left">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Quantity</th>
+                                        <th>Action</th>
+                                    </tr>
+
+
+
+                                    <% products.forEach(p => { %>
+                                        <tr>
+                                            <td>
+                                                <%= p.title %>
+                                            </td>
+                                            <td>
+                                                <%= p.quantity %>
+                                            </td>
+                                            <td>
+                                                <form action="/cart-delete-item" method="POST">
+                                                    <input type="hidden" value="<%= p._id %>" name="productId">
+                                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                                </form>
+                                            </td>
+
                                         </tr>
+                                        <% }) %>
 
-
-
-                                        <% products.forEach(p => { %>
-                                            <tr>
-                                                <td>
-                                                    <%= p.productData.title %>
-                                                </td>
-                                                <td>
-                                                    <%= p.productData.price %>
-                                                </td>
-                                                <td>
-                                                    <%= p.qty %>
-                                                </td>
-                                                <td>
-                                                    <form action="/cart-delete-item" method="POST">
-                                                        <input type="hidden" value="<%= p.productData.id %>" name="productId">
-                                                        <button class="btn btn-danger" type="submit">Delete</button>
-                                                    </form>
-                                                </td>
-
-                                            </tr>
-                                            <% }) %>
-
-                                    </table>
-                                </div>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-
-
+                <div class="row">
+                    <div class="col-md-4">
+                        <form action="/create-order" method="POST">
+                            <button type="submit" class="btn btn-primary btn-lg">Order Now!</button>
+                        </form>
+                    </div>
+                </div>
 
                 <% } else { %>
                     <h1 class="text-center">No Products in Cart!</h1>
