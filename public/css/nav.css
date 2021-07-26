@@ -23,8 +23,9 @@ nav.nav-bar-main {
 /* Mobile Menu */
 
 a.nav-link {
-    color: #0071BD !important;
+    color: #0071BD;
     font-weight: 500;
+    font-size: larger;
 }
 
 .nav-link:hover {
@@ -49,7 +50,7 @@ ul li {
 }
 
 .active {
-    color: red !important;
+    color: black !important;
 }
 
 .nav-links {

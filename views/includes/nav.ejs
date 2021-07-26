@@ -1,23 +1,41 @@
 <header class="main-header">
-    <div class="container">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 ">
-            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-            </a>
+    <div class="container-fluid">
+        <header class="py-3 flex-wrap align-items-center justify-content-center">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                        <h4 class="font-weight-bold">The Collect</h4>
+                    </a>
+                </div>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/" class="nav-link px-2 <%= path === '/' ? 'active' : '' %>">Home</a></li>
-                <li><a href="/products" class="nav-link px-2 <%= path === '/products' ? 'active' : '' %>">Products</a></li>
-                <li><a href="/orders" class="nav-link px-2 <%= path === '/orders' ? 'active' : '' %>">Orders</a></li>
-                <li><a href="/cart" class="nav-link px-2 <%= path === '/cart' ? 'active' : '' %>">Cart</a></li>
-                <li><a href="/admin/add-product" class="nav-link px-2 <%= path === '/admin/add-product' ? 'active' : '' %>k">Admin Add</a></li>
-                <li><a href="/admin/products" class="nav-link px-2 <%= path === '/admin/products' ? 'active' : '' %>">Admin Products</a></li>
-            </ul>
+                <div class="col-md-6">
+                    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="/" class="nav-link  <%= path === '/' ? 'active' : '' %>">Home</a></li>
+                        <li><a href="/products" class="nav-link  <%= path === '/products' ? 'active' : '' %>">Products</a></li>
+                        <% if (isAuthenticated) { %>
+                            <li><a href="/orders" class="nav-link  <%= path === '/orders' ? 'active' : '' %>">Orders</a>
+                            </li>
+                            <li><a href="/cart" class="nav-link  <%= path === '/cart' ? 'active' : '' %>">Cart</a></li>
 
-            <div class="col-md-3 text-end">
-                <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                <button type="button" class="btn btn-primary">Sign-up</button>
+                            <li><a href="/admin/add-product" class="nav-link  <%= path === '/admin/add-product' ? 'active' : '' %>k">Admin
+                                    Add</a></li>
+                            <li><a href="/admin/products" class="nav-link  <%= path === '/admin/products' ? 'active' : '' %>">Admin
+                                    Products</a></li>
+                            <% } %>
+                    </ul>
+                </div>
+                <div class="col-md-3 text-end">
+                    <% if (!isAuthenticated) { %>
+                        <a href="/login" class="btn btn-outline-primary">Login</a>
+                        <a href="/register" class="btn btn-primary">Sign-up</a>
+                        <% } else { %>
+                            <form action="/logout" method="post">
+                                <button type="submit" class="btn btn-warning">Logout</button>
+                            </form>
+                            <% } %>
+                </div>
             </div>
+
         </header>
     </div>
 </header>

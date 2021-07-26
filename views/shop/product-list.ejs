@@ -35,10 +35,11 @@
                                                         <input type="hidden" id="productId" name="productId" value="<%= product._id %>" />
 
                                                         <a href="/products/<%= product._id %>" class="btn btn-success">View</a>
-                                                        <button type="submit" class="btn btn-primary">Add to
-                                                                Cart</button>
 
-
+                                                        <% if (isAuthenticated) { %>
+                                                            <button type="submit" class="btn btn-primary">Add to
+                                                            Cart</button>
+                                                            <% } %>
                                                     </form>
                                                 </article>
                                             </div>
@@ -46,8 +47,8 @@
                                     </div>
 
                                 </div>
-
                                 <% } %>
+
                         </div>
                     </section>
                     <!--Section: Products-->

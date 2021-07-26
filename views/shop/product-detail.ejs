@@ -46,17 +46,19 @@
 
 
                                                 <div class="row mt-4">
-                                                    <div class="col-md-6">
+                                                    <% if (isAuthenticated) { %>
+                                                        <div class="col-md-6">
+                                                            <div class="d-grid">
+                                                                <button type="submit" class="btn btn-success mb-2">Add to cart</button>
+                                                            </div>
+                                                        </div>
 
-                                                        <div class="d-grid">
-                                                            <button type="submit" class="btn btn-success mb-2">Add to cart</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="d-grid">
-                                                            <a href="/products " class="btn btn-primary">Back</a>
-                                                        </div>
-                                                    </div>
+                                                        <% } %>
+                                                            <div class="col-md-6">
+                                                                <div class="d-grid">
+                                                                    <a href="/products " class="btn btn-primary">Back</a>
+                                                                </div>
+                                                            </div>
                                                 </div>
 
 

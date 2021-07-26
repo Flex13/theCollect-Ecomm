@@ -1,0 +1,33 @@
+<%- include('../includes/header.ejs') %>
+    <%- include('../includes/nav.ejs') %>
+        <main class="my-5">
+            <h1 class="display-5 fw-bold lh-1 mb-5 text-center">Login</h1>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-10 col-lg-6">
+                        <form class="product-form" action="/login" method="POST">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="email" placeholder="Email" name="email" id="email" autocomplete="email">
+                                <label for="email">Email</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="password" placeholder="Password" name="password" id="password" autocomplete="current-password" required>
+                                <label for="password">Password</label>
+                            </div>
+
+                            <div class="d-grid gap-2 col-12 mx-auto">
+                                <button class="btn btn-primary btn-lg" type="submit">Login</button>
+                            </div>
+
+                        </form>
+
+                        <div class="links text-center mt-4">
+                            <a href="/register" class="text-dark font-weight-bold"> Don't have an account. Register Here</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('../includes/footer.ejs') %>

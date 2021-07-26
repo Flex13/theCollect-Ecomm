@@ -81,6 +81,11 @@ a {
     background-color: #0071BD !important;
 }
 
+.btn-outline-primary:hover {
+    color: white !important;
+    background-color: #0071BD !important;
+}
+
 .btn {
     border: none !important;
     border-radius: 10px !important;
