@@ -8,12 +8,16 @@
         "start": "node app.js",
         "dev": "nodemon app.js -e,ejs"
     },
+    "server-debug": "nodemon --inspect server.js",
     "author": "Sibanye Bukani",
     "license": "ISC",
     "dependencies": {
+        "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
+        "connect-flash": "^0.1.1",
         "connect-mongo": "^4.4.1",
         "connect-mongodb-session": "^3.0.0",
+        "csurf": "^1.11.0",
         "ejs": "^3.1.6",
         "express": "^4.17.1",
         "express-handlebars": "^5.3.2",
@@ -22,6 +26,8 @@
         "mongodb": "^4.0.1",
         "mongoose": "^5.13.3",
         "mysql2": "^2.2.5",
+        "nodemailer": "^6.6.3",
+        "nodemailer-sendgrid-transport": "^0.2.0",
         "pug": "^3.0.2",
         "sequelize": "^6.6.5"
     },

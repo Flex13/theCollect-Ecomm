@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name: {
+    username: {
         type: String,
         required: true
     },
@@ -11,6 +11,16 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    cell: {
+        type: Number,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    resetToken: String,
+    resetTokenExpiration: Date,
     cart: {
         items: [{
             productId: { type: Schema.Types.ObjectId, ref: 'Product', required: true },

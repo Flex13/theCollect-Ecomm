@@ -8,7 +8,7 @@ const orderSchema = new Schema({
         quantity: { type: Number, required: true }
     }],
     user: {
-        name: {
+        username: {
             type: String,
             required: true
         },

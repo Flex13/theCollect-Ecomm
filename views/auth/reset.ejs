@@ -1,7 +1,7 @@
 <%- include('../includes/header.ejs') %>
     <%- include('../includes/nav.ejs') %>
         <main class="my-5">
-            <h1 class="display-5 fw-bold lh-1 mb-5 text-center">Login</h1>
+            <h1 class="display-5 fw-bold lh-1 mb-5 text-center">Reset Password</h1>
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-sm-12 col-md-10 col-lg-6">
@@ -12,32 +12,24 @@
                                 <%= errorMessage %>
                             </div>
                             <% } %>
-                                <form class="product-form" action="/login" method="POST">
+                                <p class="text-center">To reset your password, please provide your email.</p>
+                                <form class="product-form" action="/reset" method="POST">
                                     <div class="form-floating mb-3">
                                         <input class="form-control" type="email" placeholder="Email" name="email" id="email" autocomplete="email">
                                         <label for="email">Email</label>
                                     </div>
-
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" type="password" placeholder="Password" name="password" id="password" autocomplete="current-password" required>
-                                        <label for="password">Password</label>
-                                    </div>
-
-                                    <div class="links text-end my-3">
-                                        <a href="/reset" class="text-dark fw-bold">Forgot
-                                            your
-                                            password?</a>
-                                    </div>
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                    <div class="d-grid gap-2 col-12 mx-auto">
-                                        <button class="btn btn-primary btn-lg" type="submit">Login</button>
+                                    <div class="d-grid gap-2 col-12 mx-auto ">
+                                        <button class="btn btn-primary btn-lg" type="submit">Send Reset
+                                            Instructions</button>
                                     </div>
 
                                 </form>
 
                                 <div class="links text-center mt-4">
-                                    <p>Don't have an account?
-                                    </p><a href="/register" class="text-dark fw-bold"> Sign up now!</a>
+                                    <p>Don't have a an account? <a href="/login" class="text-dark fw-bold">Sign
+                                            up now</a>
+                                    </p>
                                 </div>
 
                     </div>

@@ -5,32 +5,43 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-sm-12 col-md-10 col-lg-6">
-                        <form class="product-form" action="/login" method="POST">
+                        <form class="product-form" action="/register" method="POST">
 
-                            <div class="form-floating mb-3">
-                                <input class="form-control" type="text" name="username" placeholder="Username" id="username" autocomplete="name">
-                                <label for="username">Username</label>
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input class="form-control" type="email" name="email" id="email" placeholder="Email" autocomplete="email">
-                                <label for="email">Email</label>
-                            </div>
+                            <% if (errorMessage) { %>
+                                <div class="alert alert-danger text-center" role="alert">
+                                    <%= errorMessage %>
+                                </div>
+                                <% } %>
 
-                            <div class="form-floating mb-3">
-                                <input class="form-control" type="cell" name="cell" id="cells" placeholder="Cell" autocomplete="tel">
-                                <label for="cell">Cell</label>
-                            </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" type="text" name="username" placeholder="Username" id="username" autocomplete="name">
+                                        <label for="username">Username</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" type="email" name="email" id="email" placeholder="Email" autocomplete="email">
+                                        <label for="email">Email</label>
+                                    </div>
 
-                            <div class="form-floating mb-3">
-                                <input class="form-control" type="password" placeholder="password" name="password" id="password" autocomplete="new-password" required>
-                                <label for="password">Password</label>
-                            </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" type="cell" name="cell" id="cells" placeholder="Cell" autocomplete="tel">
+                                        <label for="cell">Cell</label>
+                                    </div>
 
-                            <div class="d-grid gap-2 col-12 mx-auto">
-                                <button class="btn btn-primary btn-lg" type="submit">Sign Up</button>
-                            </div>
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" type="password" placeholder="password" name="password" id="password" autocomplete="new-password" required>
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <div class="d-grid gap-2 col-12 mx-auto">
+                                        <button class="btn btn-primary btn-lg" type="submit">Sign Up</button>
+                                    </div>
 
                         </form>
+
+                        <div class="links text-center mt-4">
+                            <p>Already have an account?
+                            </p><a href="/login" class="text-dark fw-bold"> Login now!</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -30,6 +30,7 @@
                         <a href="/register" class="btn btn-primary">Sign-up</a>
                         <% } else { %>
                             <form action="/logout" method="post">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <button type="submit" class="btn btn-warning">Logout</button>
                             </form>
                             <% } %>

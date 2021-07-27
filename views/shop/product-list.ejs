@@ -31,14 +31,14 @@
 
 
                                                     <form action="/cart" method="POST" class="mt-4">
-
+                                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                                         <input type="hidden" id="productId" name="productId" value="<%= product._id %>" />
 
                                                         <a href="/products/<%= product._id %>" class="btn btn-success">View</a>
 
                                                         <% if (isAuthenticated) { %>
                                                             <button type="submit" class="btn btn-primary">Add to
-                                                            Cart</button>
+                                                                Cart</button>
                                                             <% } %>
                                                     </form>
                                                 </article>

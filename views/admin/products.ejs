@@ -48,7 +48,7 @@
                                             </td>
                                             <td>
                                                 <form action="/admin/delete-product" method="POST">
-
+                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                                     <input type="hidden" name="productId" id="productId" value="<%= product._id %>">
                                                     <div class="d-grid mx-auto">
                                                         <button type="submit" class="btn btn-danger">Delete</button>
